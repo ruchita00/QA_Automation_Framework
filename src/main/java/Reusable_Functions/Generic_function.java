@@ -13,9 +13,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Generic_function {
-	WebDriver driver=null;
+	public static WebDriver driver=null;
 	public static XSSFWorkbook workbook;
 	public static XSSFWorkbook workbook1;
 	public static XSSFSheet sheet;
@@ -132,8 +133,14 @@ public class Generic_function {
 		return path;
 	}
 	/*Generic Click function*/
-	public void click(String objname, WebDriver driver) throws IOException {
+	public void click(String objname) throws IOException {
 		driver.findElement(By.xpath(OR_reader("Object Locator", objname))).click();
 
+	}
+	/*For launching the browser*/
+	public WebDriver BrowserLaunch() {
+		System.setProperty("webdriver.chrome.driver",getDriverPath());
+		driver =new ChromeDriver();
+		return driver;
 	}
 }
